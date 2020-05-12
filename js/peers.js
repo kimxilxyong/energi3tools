@@ -5,6 +5,8 @@ var currentVersion = "3.0.6";
 function checkPeersByVersion(latestVersion, removePeer) {
     var invalidCount = 0;
     for (var i in admin.peers) {
+        if (admin.peers[i] === undefined)
+           continue; 
         var name = String(admin.peers[i].name);
         var version = name.substring(9,14);
         if (version != latestVersion) {
